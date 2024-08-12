@@ -27,6 +27,10 @@ function findNewQuadrant(point) {
     return newQuadrant;
 }
 
+// To be honest, that's AI generated. Sorry. I have no idea of how this 
+// works. Since this was not the key functionality of my tic-tac-toe game,
+// I just asked copilot to do this for me. Maybe sometime I take the time
+// to read this, but right now, I don't want to do this.
 function checkWinner(moves) {
     // Initialize the board
     const board = [

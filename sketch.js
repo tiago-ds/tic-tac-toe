@@ -1,6 +1,7 @@
 const width = 800;
 const height = 800;
 let moves;
+let isX;
 
 class Point { 
   constructor(x, y) {
@@ -15,6 +16,7 @@ function mouseClicked() {
 
 function setup() {
   moves = [];
+  isX = true;
   createCanvas(width, height);
   strokeWeight(5);
 }
@@ -36,13 +38,9 @@ function markNewQuadrant(point) {
   } else {
     newQuadrant.push(1);
   }
-  
-  if(moves.some(move => newQuadrant[0] === move[0] && newQuadrant[1] === move[1])) {
-    return;
-  }
 
-  moves.push(new Mark(newQuadrant[0], newQuadrant[1], true));
-  
+  moves.push(new Mark(newQuadrant[0], newQuadrant[1], this.isX));
+  this.isX = !this.isX;
 }
 
 

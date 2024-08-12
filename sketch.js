@@ -39,6 +39,10 @@ function markNewQuadrant(point) {
     newQuadrant.push(1);
   }
 
+  if(moves.find(move => move.row == newQuadrant[0] && move.column == newQuadrant[1])) {
+    return;
+  }
+
   moves.push(new Mark(newQuadrant[0], newQuadrant[1], this.isX));
   this.isX = !this.isX;
 }

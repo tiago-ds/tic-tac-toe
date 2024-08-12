@@ -14,17 +14,20 @@ function setup() {
 	isX = true;
 	winner = false;
 	createCanvas(width, height);
-	strokeWeight(5);
 }
 
 function draw() {
 	background(220);
 	drawBoard();
 
-	for (const mark of moves) {
+	moves.forEach(function (mark, i) {
+		strokeWeight(5);
+		if(moves.length == 6 && i == 0 && !winner) {
+			strokeWeight(1);
+		}
 		mark.drawMove();
-	}
-	
+	})
+
 	if (winner) {
 		drawWinner(winner);
 		noLoop();

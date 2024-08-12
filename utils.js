@@ -1,4 +1,5 @@
 function drawBoard() {
+    strokeWeight(5);
     line((1 / 3) * width, 10, (1 / 3) * width, height - 10);
     line((2 / 3) * width, 10, (2 / 3) * width, height - 10);
     line(10, (1 / 3) * height, width - 10, (1 / 3) * height);
@@ -84,6 +85,10 @@ function markNewQuadrant(point) {
 		return;
 	}
 
+    if(moves.length == 6) {
+        moves.splice(0, 1);
+    }
+
 	moves.push(new Mark(newQuadrant[0], newQuadrant[1], isX));
 	isX = !isX;
 }
@@ -123,6 +128,6 @@ function drawRow(rowNumber) {
 function drawColumn(columnNumber) {
     push();
         translate((columnNumber/3)*width, 0);
-        line(width/6, 25, width/6, height - 25);
+        line(width/6, 12.5, width/6, height - 12.5);
     pop();
 }

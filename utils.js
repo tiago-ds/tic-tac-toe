@@ -100,8 +100,25 @@ function markNewQuadrant(point) {
 function restartGame() {
     moves = [];
     isX = true;
+
+    if(winner) {
+        toggleWinnerAnnoucement();
+    }
+
     winner = false;
+    finished = false;
+    
     loop();
+}
+
+function toggleWinnerAnnoucement() {
+    if(winnerAnnouncement.classList.contains("hide")) {
+        winnerText.innerText = `${winner[0]} is the winner!`
+        winnerAnnouncement.classList.remove("hide");
+        return;
+    }
+
+    winnerAnnouncement.classList.add("hide");
 }
 
 function drawWinner(input) {

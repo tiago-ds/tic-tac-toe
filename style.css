@@ -1,3 +1,18 @@
+.autour-ff {
+  font-family: "Autour One", system-ui;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.fredoka {
+  font-family: "Fredoka", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  font-variation-settings:
+    "wdth" 100;
+}
+
 html, body {
   margin: 0;
   padding: 0;
@@ -5,13 +20,58 @@ html, body {
   flex-direction: column;
   align-items: center;
 }
+
+body {
+  background-image: url("/tic-tac-toe-seamless-background-on-dark-blue-illustration-vector.jpg");
+  background-size: auto;
+}
+
 canvas {
   margin: 1rem;
   display: block;
-  border: 5px ridge rebeccapurple;
+  border: 5px solid black;
   border-radius: 8px;
 }
 
+h1 {
+  margin-top: 5rem;
+  color: white;
+}
+
 button {
+  font-size: larger;
   margin: 1rem;
+  padding: 0.5rem;
+
+  border: none;
+  border-radius: 15px;
+}
+
+button:hover {
+  cursor: pointer;
+  background-color: #a5a5ac;
+}
+
+#winner {
+  font-size: 3rem;
+}
+
+.hide {
+  display: none !important;
+}
+
+#winner-announcement {
+  height: 20vh;
+  width: 40vw;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 25px;
+  border: 5px solid black;
+  background: #5e60a5;
+  position: fixed;
+  top: 35vh;
+  z-index: 1;
 }

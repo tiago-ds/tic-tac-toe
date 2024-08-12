@@ -1,11 +1,15 @@
-const width = 800;
-const height = 800;
+const width = 600;
+const height = 600;
 let moves;
 let isX;
 let winner;
+let finished;
 
 const newGameButton = document.getElementById("newGameButton");
 newGameButton.onclick = restartGame;
+
+const winnerAnnouncement = document.getElementById("winner-announcement");
+const winnerText = document.getElementById("winner");
 
 function mouseClicked() {
 	if(mouseX > width || mouseY > height) {
@@ -20,11 +24,12 @@ function setup() {
 	moves = [];
 	isX = true;
 	winner = false;
+	finished = false;
 	createCanvas(width, height);
 }
 
 function draw() {
-	background(220);
+	background('#DCDCDC');
 	drawBoard();
 
 	moves.forEach(function (mark, i) {
@@ -36,7 +41,9 @@ function draw() {
 	})
 
 	if (winner) {
+		finished = true;
 		drawWinner(winner);
+		toggleWinnerAnnoucement();
 		noLoop();
 	} 
 }

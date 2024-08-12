@@ -1,7 +1,17 @@
 html, body {
   margin: 0;
   padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 canvas {
+  margin: 1rem;
   display: block;
+  border: 5px ridge rebeccapurple;
+  border-radius: 8px;
+}
+
+button {
+  margin: 1rem;
 }

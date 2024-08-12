@@ -93,6 +93,12 @@ function markNewQuadrant(point) {
 	isX = !isX;
 }
 
+function restartGame() {
+    moves = [];
+    isX = true;
+    winner = false;
+    loop();
+}
 
 function drawWinner(input) {
     [winner, coords, number] = input;

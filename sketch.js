@@ -4,7 +4,14 @@ let moves;
 let isX;
 let winner;
 
+const newGameButton = document.getElementById("newGameButton");
+newGameButton.onclick = restartGame;
+
 function mouseClicked() {
+	if(mouseX > width || mouseY > height) {
+		return;
+	}
+	
 	markNewQuadrant(new Point(mouseX, mouseY));
 	winner = checkWinner(moves);
 }

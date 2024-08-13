@@ -19,7 +19,7 @@ html, body {
 }
 
 body {
-  background-image: url("/tic-tac-toe-seamless-background-on-dark-blue-illustration-vector.jpg");
+  background-image: url("assets/tic-tac-toe-seamless-background-on-dark-blue-illustration-vector.jpg");
   background-size: auto;
 }
 
@@ -34,6 +34,8 @@ h1.title {
   margin-top: 5rem;
   font-size: 5rem;
   color: white;
+  
+  text-shadow: black 5px 5px 15px;
 }
 
 button {
@@ -54,6 +56,7 @@ button:hover {
   height: 20vh;
   min-height: 140px;
   width: 40vw;
+  min-width: 215px;
   max-width: 400px;
   top: 45vh;
   position: fixed;
@@ -81,6 +84,13 @@ button:hover {
 .winner-text {
   padding-bottom: 10px;
   font-weight: 300;
+}
+
+.winner-text::before {
+  position: absolute;
+  content: url("assets/stroke.png ");
+  top: 73%;
+  left: 45%;
 }
 
 #winner {

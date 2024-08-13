@@ -9,7 +9,9 @@
     <link rel="icon" type="image/x-icon" href="/assets/x-favicon.png">
     <link rel="stylesheet" type="text/css" href="style.css">
     <meta charset="utf-8" />
-
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="client.js"></script>
+    <title>Tic tac toe!</title>
   </head>
   <body>
     <h1 class="autour-ff title">Tic tac toe!</h1>
@@ -20,8 +22,10 @@
     <main>
     </main>
     <button class="autour-ff new-game" id="newGameButton"> New Game </button>
-    <script src="src/p5/utils.js"></script>
-    <script src="src/p5/classes.js"></script>
-    <script src="src/p5/sketch.js"></script>
+    <script src="p5/utils.js"></script>
+    <script src="p5/classes.js"></script>
+    <script src="p5/sketch.js"></script>
+    <input id="input" type="text" placeholder="type"> 
+    <button id="connectButton">Send data</button>
   </body>
 </html>

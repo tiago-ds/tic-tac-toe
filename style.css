@@ -1,6 +1,6 @@
 .autour-ff {
   font-family: "Autour One", system-ui;
-  font-weight: 400;
+  font-weight: bolder;
   font-style: normal;
 }
 
@@ -19,8 +19,8 @@ html, body {
 }
 
 body {
-  background-image: url("assets/tic-tac-toe-seamless-background-on-dark-blue-illustration-vector.jpg");
-  background-size: auto;
+  background-image: url("assets/background.png");
+  background-size: cover;
 }
 
 canvas {
@@ -34,8 +34,6 @@ h1.title {
   margin-top: 5rem;
   font-size: 5rem;
   color: white;
-  
-  text-shadow: black 5px 5px 15px;
 }
 
 button {

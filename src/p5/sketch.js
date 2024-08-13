@@ -12,10 +12,9 @@ const winnerAnnouncement = document.getElementById("winner-announcement");
 const winnerText = document.getElementById("winner");
 
 function mouseClicked() {
-	if(mouseX > width || mouseY > height) {
+	if(mouseX > width || mouseY > height || mouseX < 0 || mouseY < 0) {
 		return;
 	}
-	
 	markNewQuadrant(new Point(mouseX, mouseY));
 	winner = checkWinner(moves);
 }

@@ -5,17 +5,14 @@
 }
 
 .fredoka {
-  font-family: "Fredoka", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: 400;
-  font-style: normal;
-  font-variation-settings:
-    "wdth" 100;
+  font-family: "Fredoka One", sans-serif;
+  font-weight: 200;
 }
 
 html, body {
   margin: 0;
   padding: 0;
+
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -33,13 +30,14 @@ canvas {
   border-radius: 8px;
 }
 
-h1 {
+h1.title {
   margin-top: 5rem;
+  font-size: 5rem;
   color: white;
 }
 
 button {
-  font-size: larger;
+  font-size: 1.5rem;
   margin: 1rem;
   padding: 0.5rem;
 
@@ -52,26 +50,44 @@ button:hover {
   background-color: #a5a5ac;
 }
 
+#winner-announcement {
+  height: 20vh;
+  min-height: 140px;
+  width: 40vw;
+  max-width: 400px;
+  top: 45vh;
+  position: fixed;
+  z-index: 1;
+  
+  font-size: 2rem;
+  color: white;
+  
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 0;
+  
+  background: #5e60a5;
+
+  border-radius: 25px;
+
+}
+
+.text {
+  margin: -10px;
+}
+
+.winner-text {
+  padding-bottom: 10px;
+  font-weight: 300;
+}
+
 #winner {
-  font-size: 3rem;
+  font-size: 6rem;
+  font-weight: 500;
 }
 
 .hide {
   display: none !important;
-}
-
-#winner-announcement {
-  height: 20vh;
-  width: 40vw;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  border-radius: 25px;
-  border: 5px solid black;
-  background: #5e60a5;
-  position: fixed;
-  top: 35vh;
-  z-index: 1;
 }

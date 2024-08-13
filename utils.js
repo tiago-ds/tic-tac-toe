@@ -113,7 +113,7 @@ function restartGame() {
 
 function toggleWinnerAnnoucement() {
     if(winnerAnnouncement.classList.contains("hide")) {
-        winnerText.innerText = `${winner[0]} is the winner!`
+        winnerText.innerText = `${winner[0]}`
         winnerAnnouncement.classList.remove("hide");
         return;
     }
@@ -138,17 +138,17 @@ function drawWinner(input) {
 }
 
 function drawDiag1() {
-    line(25, 25, width - 25, height -25);  
+    line(12.5, 12.5, width - 12.5, height -12.5);  
 }
 
 function drawDiag2() {
-    line(width - 25, 25, 25, height - 25);
+    line(width - 12.5, 12.5, 12.5, height - 12.5);
 }
 
 function drawRow(rowNumber) {
     push();
         translate(0, (rowNumber/3)*height + 1/6*height);
-        line(25, 0, width - 25, 0);
+        line(12.5, 0, width - 12.5, 0);
     pop();
 }
 

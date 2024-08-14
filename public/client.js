@@ -1,5 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
     const socket = io();
+    // debug
     input = document.getElementById('input');
     document.getElementById('connectButton').addEventListener('click', () => {
         socket.emit('buttonClicked', { message: input.value});
@@ -14,6 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     socket.on("game", (data) => {
+        // Get the "moves" property and draw it in the board
         console.log(data);
     })
 });

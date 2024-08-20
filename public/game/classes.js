@@ -40,3 +40,27 @@ class Mark {
     pop();
   }
 }
+
+function drawMove(row, column, isX) {
+  push();
+  translate((row / 3) * width, (column / 3) * height);
+  if (isX) {
+    drawX();
+  } else {
+    drawCircle();
+  }
+  pop();
+}
+
+function drawX() {
+  line(25, 25, (1 / 3) * height - 25, (1 / 3) * width - 25);
+  line((1 / 3) * width - 25, 25, 25, (1 / 3) * height - 25);
+}
+
+function drawCircle() {
+  push();
+  translate(width / 6, height / 6);
+  noFill();
+  circle(0, 0, (width - 100) / 3);
+  pop();
+}

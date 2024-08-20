@@ -1,9 +1,8 @@
+
+const socket = io();
 document.addEventListener('DOMContentLoaded', () => {
-    const socket = io();
-    // debug
-    input = document.getElementById('input');
-    document.getElementById('connectButton').addEventListener('click', () => {
-        socket.emit('buttonClicked', { message: input.value});
+    document.getElementById('newGameButton').addEventListener('click', () => {
+        socket.emit('newGameButtonClicked');
     });
 
     socket.on('connect', () => {
@@ -14,8 +13,12 @@ document.addEventListener('DOMContentLoaded', () => {
         console.log('Disconnected from the server');
     });
 
-    socket.on("game", (data) => {
-        // Get the "moves" property and draw it in the board
-        console.log(data);
-    })
+    socket.on("game", (game) => {
+        if(!game.moves) {
+            return;
+        }
+
+        moves = game.moves;
+    });
+
 });

@@ -19,6 +19,13 @@ function mouseClicked() {
 	winner = checkWinner(moves);
 }
 
+// for mobile
+function touchEnded() {
+	if(touches.lenght == 0) {
+		return;
+	}
+}
+
 function setup() {
 	moves = [];
 	isX = true;
@@ -36,7 +43,7 @@ function draw() {
 		if(moves.length == 6 && i == 0 && !winner) {
 			strokeWeight(1);
 		}
-		mark.drawMove();
+		drawMove(mark.row, mark.column, mark.isX);
 	})
 
 	if (winner) {

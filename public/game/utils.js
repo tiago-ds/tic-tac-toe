@@ -93,7 +93,7 @@ function markNewQuadrant(point) {
         moves.splice(0, 1);
     }
 
-	moves.push(new Mark(newQuadrant[0], newQuadrant[1], isX));
+    socket.emit('played', new Mark(newQuadrant[0], newQuadrant[1], isX));
 	isX = !isX;
 }
 

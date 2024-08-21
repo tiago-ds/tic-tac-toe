@@ -44,5 +44,13 @@ module.exports = {
 
         // No winner found
         return false;
+    },
+
+    removeDisconnectedSocket: function(game, disconnectedSocketId) {
+        for (const key in game) {
+            if (game[key] === disconnectedSocketId) {
+                delete game[key];
+            }
+        }
     }
 }

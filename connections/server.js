@@ -10,15 +10,18 @@ const io = socketIo(server);
 
 let game = {};
 
-function resetGame() {
-	game = {	
-		started: true,
-		isX: true,
-		moves: [],
-		winner: false,
-		finished: false,
-	}
+function clearGame() {
+	const x = game.x;
+	const o = game.o;
 
+	game = {
+		x,
+		o,
+		winner: false,
+		moves: []
+	};
+
+	io.emit("game", game);
 }
 
 function startNewGame() {
@@ -66,16 +69,22 @@ io.on("connection", (socket) => {
 		console.log(data);
 
 		game.moves.push(data);
+		if(game.moves.length == 7) {
+			game.moves.splice(0, 1);
+		}
 		game.isX = !game.isX;
 		
 		game.winner = utils.checkWinner(game.moves);
 		//emits the new board to clients
-		io.emit("game", game)
+		io.emit("game", game);
 	});
 
 	socket.on("disconnect", () => {
 		console.log(`${socket.id} disconnected.`);
-		delete game[socket.id];
+		
+		utils.removeDisconnectedSocket(game, socket.id);
+
+		clearGame();
 	});
 });
 

@@ -35,7 +35,7 @@ function draw() {
 	background('#DCDCDC');
 	drawBoard();
 
-	if(!game) {
+	if(!game || !game.moves) {
 		return;
 	}
 

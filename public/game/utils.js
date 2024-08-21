@@ -27,86 +27,29 @@ function findNewQuadrant(point) {
     return newQuadrant;
 }
 
-// To be honest, that's AI generated. Sorry. I have no idea of how this 
-// works. Since this was not the key functionality of my tic-tac-toe game,
-// I just asked copilot to do this for me. Maybe sometime I will take the 
-// time to read this, but right now, I don't want to.
-function checkWinner(moves) {
-    // Initialize the board
-    const board = [
-        ['', '', ''],
-        ['', '', ''],
-        ['', '', '']
-    ];
-
-    // Fill the board based on the moves
-    moves.forEach(({ row, column, isX }) => {
-        board[row][column] = isX ? 'X' : 'O';
-    });
-
-    // Helper function to check if all elements in an array are the same
-    const allSame = arr => arr[0] !== '' && arr.every(val => val === arr[0]);
-
-    // Check rows for a winner
-    for (let row = 0; row < 3; row++) {
-        if (allSame(board[row])) {
-            return [board[row][0],'column',row];
-        }
-    }
-
-    // Check columns for a winner
-    for (let col = 0; col < 3; col++) {
-        const column = [board[0][col], board[1][col], board[2][col]];
-        if (allSame(column)) {
-            return [column[0],'row',col];
-        }
-    }
-
-    // Check diagonals for a winner
-    const diag1 = [board[0][0], board[1][1], board[2][2]];
-    const diag2 = [board[0][2], board[1][1], board[2][0]];
-
-    if (allSame(diag1)) {
-        return [diag1[0],'diag', 1];
-    }
-
-    if (allSame(diag2)) {
-        return [diag2[0],'diag', 2];
-    }
-
-    // No winner found
-    return false;
-}
-
 function markNewQuadrant(point) {
 	let newQuadrant = findNewQuadrant(point);
 
 	if (
-		moves.find(
+		game.moves.find(
 		(move) => move.row == newQuadrant[0] && move.column == newQuadrant[1]
 		)
 	) {
 		return;
 	}
 
-    if(moves.length == 6) {
-        moves.splice(0, 1);
+    if(game.moves.length == 6) {
+        game.moves.splice(0, 1);
     }
 
-    socket.emit('played', new Mark(newQuadrant[0], newQuadrant[1], isX));
-	isX = !isX;
+    socket.emit('played', new Mark(newQuadrant[0], newQuadrant[1], !!game.isX));
+	game.isX = !game.isX;
 }
 
 function restartGame() {
-    moves = [];
-    isX = true;
-
-    if(winner) {
+    if(game.winner) {
         toggleWinnerAnnoucement();
     }
-
-    winner = false;
-    finished = false;
     
     loop();
 }

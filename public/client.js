@@ -7,18 +7,18 @@ document.addEventListener('DOMContentLoaded', () => {
 
     socket.on('connect', () => {
         console.log('Connected to the server');
+        console.log(`I'm ${socket.id}`);
     });
 
     socket.on('disconnect', () => {
         console.log('Disconnected from the server');
     });
 
-    socket.on("game", (game) => {
-        if(!game.moves) {
+    socket.on("game", (eGame) => {
+        if(!eGame) {
             return;
         }
-
-        moves = game.moves;
+        game = eGame;
     });
 
 });

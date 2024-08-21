@@ -1,9 +1,7 @@
 const width = 600;
 const height = 600;
-let moves;
-let isX;
-let winner;
-let finished;
+
+let game;
 
 const newGameButton = document.getElementById("newGameButton");
 newGameButton.onclick = restartGame;
@@ -15,22 +13,21 @@ function mouseClicked() {
 	if(mouseX > width || mouseY > height || mouseX < 0 || mouseY < 0) {
 		return;
 	}
-	markNewQuadrant(new Point(mouseX, mouseY));
-	winner = checkWinner(moves);
-}
 
-// for mobile
-function touchEnded() {
-	if(touches.lenght == 0) {
+	//console.log(game);
+
+	if(game.x == socket.id && game.isX) {
+		markNewQuadrant(new Point(mouseX, mouseY));
+		return;
+	}
+
+	if(game.o == socket.id && !game.isX) {
+		markNewQuadrant(new Point(mouseX, mouseY));
 		return;
 	}
 }
 
 function setup() {
-	moves = [];
-	isX = true;
-	winner = false;
-	finished = false;
 	createCanvas(width, height);
 }
 
@@ -38,17 +35,21 @@ function draw() {
 	background('#DCDCDC');
 	drawBoard();
 
-	moves.forEach(function (mark, i) {
+	if(!game) {
+		return;
+	}
+
+	game.moves.forEach(function (mark, i) {
 		strokeWeight(5);
-		if(moves.length == 6 && i == 0 && !winner) {
+		if(game.moves.length == 6 && i == 0 && !game.winner) {
 			strokeWeight(1);
 		}
 		drawMove(mark.row, mark.column, mark.isX);
 	})
 
-	if (winner) {
+	if (game.winner) {
 		finished = true;
-		drawWinner(winner);
+		drawWinner(game.winner);
 		toggleWinnerAnnoucement();
 		noLoop();
 	} 

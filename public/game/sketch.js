@@ -3,11 +3,11 @@ const height = 600;
 
 let game;
 
-const newGameButton = document.getElementById("newGameButton");
+const newGameButton = document.getElementById('newGameButton');
 newGameButton.onclick = restartGame;
 
-const winnerAnnouncement = document.getElementById("winner-announcement");
-const winnerText = document.getElementById("winner");
+const winnerAnnouncement = document.getElementById('winner-announcement');
+const winnerText = document.getElementById('winner');
 
 function mouseClicked() {
 	if(mouseX > width || mouseY > height || mouseX < 0 || mouseY < 0) {
@@ -45,7 +45,7 @@ function draw() {
 			strokeWeight(1);
 		}
 		drawMove(mark.row, mark.column, mark.isX);
-	})
+	});
 
 	if (game.winner) {
 		finished = true;
